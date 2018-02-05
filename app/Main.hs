@@ -15,6 +15,7 @@ import Data.Aeson as J
 import Data.Aeson.Types as J
 import System.Environment
 
+sendResponse :: Monad m => (Response -> m b) -> ExceptT BL.ByteString m b -> m b
 sendResponse send m = runExceptT m >>= \case
     Left e -> send $ responseLBS status400 [] e
     Right a -> return a
@@ -51,9 +52,7 @@ main = do
       Just a -> pure a
     case parse commentArtifact obj of
       J.Success mkReq -> liftIO $ do
-        req <- mkReq
-        print req
-        send $ responseLBS status200 [] "done"
-      J.Error e -> do
-        liftIO $ print e
-        throwE $ BL.pack e
+        req' <- mkReq
+        resp <- HC.httpLbs req' man
+        send $ responseLBS (HC.responseStatus resp) [] $ HC.responseBody resp
+      J.Error e -> throwE $ BL.pack e
