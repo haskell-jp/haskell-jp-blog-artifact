@@ -39,7 +39,10 @@ commentArtifact obj = do
               , "generated-site/index.html"]
             -- TODO: , "path" .=
             ]
-          , HC.requestHeaders = [("Authorization", B.pack token)]
+          , HC.requestHeaders =
+            [ ("Authorization", B.pack token)
+            , ("User-Agent", "haskell-jp-blog-artifact")
+            ]
           }
 
 main :: IO ()
