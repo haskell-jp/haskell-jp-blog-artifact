@@ -13,6 +13,7 @@ import Network.HTTP.Client.TLS
 import qualified Data.Text as T
 import Data.Aeson as J
 import Data.Aeson.Types as J
+import Data.Monoid
 import System.Environment
 
 sendResponse :: Monad m => (Response -> m b) -> ExceptT BL.ByteString m b -> m b
@@ -35,7 +36,7 @@ commentArtifact obj = do
           { HC.method = "POST"
           , HC.requestBody = HC.RequestBodyLBS $ J.encode $ object
             [ "body" .= T.intercalate "/"
-              [ buildUrl, "artifacts", "0", home, repo
+              [ buildUrl, "artifacts", "0" <> home, "project"
               , "generated-site/index.html"]
             -- TODO: , "path" .=
             ]
