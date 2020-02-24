@@ -26,7 +26,6 @@ commentArtifact obj = do
   owner <- obj .: "CIRCLE_PROJECT_USERNAME"
   repo <- obj .: "CIRCLE_PROJECT_REPONAME"
   sha <- obj .: "CIRCLE_SHA1"
-  home <- obj .: "HOME"
   return $ do
     token <- getEnv "GITHUB_TOKEN"
     initialRequest <- HC.parseRequest
@@ -35,7 +34,7 @@ commentArtifact obj = do
       { HC.method = "POST"
       , HC.requestBody = HC.RequestBodyLBS $ J.encode $ object
         [ "body" .= T.intercalate "/"
-          [ buildUrl, "artifacts", "0" <> home, "project"
+          [ buildUrl, "artifacts", "0"
           , "generated-site/index.html"]
         -- TODO: , "path" .=
         ]
