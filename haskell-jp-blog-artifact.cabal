@@ -1,0 +1,40 @@
+cabal-version:  2.4
+
+name:           haskell-jp-blog-artifact
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/fumieval/haskell-jp-blog-artifact#readme>
+homepage:       https://github.com/fumieval/haskell-jp-blog-artifact#readme
+bug-reports:    https://github.com/fumieval/haskell-jp-blog-artifact/issues
+author:         Fumiaki Kinoshita
+maintainer:     fumiexcel@gmail.com
+copyright:      Copyright (c) 2021 Fumiaki Kinoshita
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/fumieval/haskell-jp-blog-artifact
+
+executable haskell-jp-blog-artifact-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_jp_blog_artifact
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -Wall
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , http-client
+    , http-client-tls
+    , http-types
+    , text
+    , transformers
+    , wai
+    , warp
+  default-language: Haskell2010
