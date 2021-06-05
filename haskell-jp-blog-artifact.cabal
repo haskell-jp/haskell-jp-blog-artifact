@@ -1,7 +1,7 @@
 cabal-version:  2.4
 
 name:           haskell-jp-blog-artifact
-version:        0.1.0.0
+version:        0.1.0.1
 description:    Please see the README on Github at <https://github.com/fumieval/haskell-jp-blog-artifact#readme>
 homepage:       https://github.com/fumieval/haskell-jp-blog-artifact#readme
 bug-reports:    https://github.com/fumieval/haskell-jp-blog-artifact/issues
