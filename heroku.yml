@@ -1,0 +1,3 @@
+build:
+  docker:
+    haskell-jp-blog-artifact: Dockerfile
