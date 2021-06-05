@@ -19,7 +19,7 @@ source-repository head
   type: git
   location: https://github.com/fumieval/haskell-jp-blog-artifact
 
-executable haskell-jp-blog-artifact-exe
+executable haskell-jp-blog-artifact
   main-is: Main.hs
   other-modules:
       Paths_haskell_jp_blog_artifact
